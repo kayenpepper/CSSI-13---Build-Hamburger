@@ -8,5 +8,19 @@ toppings.forEach((topping) => {
   });
 });
 
-// // not querySelectorAll because there is only one checkout button
-// const checkoutButton = document.querySelector(".button");
+// not querySelectorAll because there is only one checkout button
+const checkoutButton = document.querySelector(".button");
+let total = 0;
+// total selector
+const answerHolder = document.querySelector("#total");
+// add prices for checkout
+checkoutButton.addEventListener("click", (e) => {
+  ingredients.forEach((ingredient) => {
+    total += Number(ingredient.dataset.price);
+  });
+  answerHolder.innerHTML = `The total cost of your burger is $${total}`;
+})
+
+// add all the toppings under order
+// nesting format like calling css
+const ingredients = document.querySelectorAll(".order .topping");
